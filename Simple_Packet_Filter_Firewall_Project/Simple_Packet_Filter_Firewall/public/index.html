@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel | Firewall Rules Engine v1.1.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark"><span></span><span></span><span></span></div><div><b>SENTINEL</b><small>NETWORK DEFENSE</small></div></div>
+  <div class="side-label">WORKSPACE</div>
+  <a class="nav active" href="#overview"><i>◈</i> Overview <span class="nav-dot"></span></a>
+  <a class="nav" href="#inspector"><i>⌁</i> Packet inspector</a>
+  <a class="nav" href="#rules"><i>▤</i> Firewall rules</a>
+  <a class="nav" href="#activity"><i>◷</i> Traffic activity</a>
+  <div class="sidebar-bottom"><div class="system-card"><div class="system-top"><span class="pulse"></span> ENGINE STATUS</div><b>PROTECTED</b><small>C filtering core · localhost</small></div><div class="profile"><div class="avatar">SF</div><div><b>Security Admin</b><small>Administrator</small></div><span class="dots">•••</span></div></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><div class="eyebrow">SECURITY CENTER / <span>OVERVIEW</span></div><h1>Firewall <em>command center</em></h1></div><div class="top-actions"><div class="live-pill"><span class="pulse"></span> ENGINE ONLINE</div><div class="clock" id="clock">--:--:--</div></div></header>
+  <section class="hero" id="overview">
+    <div class="hero-copy"><div class="hero-kicker"><span class="tiny-line"></span> NETWORK PROTECTION SYSTEM</div><h2>See threats.<br><span>Control traffic.</span></h2><p>Inspect packet behavior, manage filtering policies, and monitor your network simulation from one control surface.</p><a class="hero-link" href="#inspector">INSPECT A PACKET <b>↗</b></a></div>
+    <div class="hero-visual"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="core-shield"><div class="shield-inner">⌑</div><span class="core-caption">C FILTER CORE</span></div><div class="node node-one">TCP <b>443</b></div><div class="node node-two">UDP <b>53</b></div><div class="node node-three">PACKET <b>SCAN</b></div><div class="scan-line"></div></div>
+    <div class="hero-foot"><span><i class="green-dot"></i> RULE ENGINE ACTIVE</span><span>DEFAULT POLICY <b>DENY</b></span><span>MODE <b>SIMULATION</b></span></div>
+  </section>
+  <section class="stats-grid">
+    <article class="stat-card"><div class="stat-head">TOTAL PACKETS <span>↗</span></div><div class="stat-value" id="totalStat">0</div><div class="stat-foot">Packets inspected this session</div><div class="stat-icon">⌁</div></article>
+    <article class="stat-card"><div class="stat-head">ALLOWED <span class="green-text">●</span></div><div class="stat-value green-text" id="allowedStat">0</div><div class="stat-foot">Matched allow policies</div><div class="stat-icon green-text">✓</div></article>
+    <article class="stat-card"><div class="stat-head">BLOCKED <span class="red-text">●</span></div><div class="stat-value red-text" id="blockedStat">0</div><div class="stat-foot">Denied by filtering engine</div><div class="stat-icon red-text">⊘</div></article>
+    <article class="stat-card"><div class="stat-head">ACTIVE RULES <span>▤</span></div><div class="stat-value" id="rulesStat">5</div><div class="stat-foot">Configured policy entries</div><div class="stat-icon">⌘</div></article>
+  </section>
+  <section class="content-grid">
+    <article class="panel inspector-panel" id="inspector">
+      <div class="panel-heading"><div><div class="eyebrow">LIVE SIMULATION</div><h3>Packet inspector</h3></div><span class="panel-tag">C ENGINE</span></div>
+      <p class="panel-desc">Submit a packet to evaluate it against the active firewall rules.</p>
+      <form id="packetForm">
+        <div class="form-row"><label>PROTOCOL<select id="protocol"><option>TCP</option><option>UDP</option><option>ICMP</option></select></label><label>DESTINATION PORT<input id="port" type="number" min="0" max="65535" value="443" required></label></div>
+        <div class="form-row"><label>SOURCE IP<input id="sourceIp" value="192.168.1.10" required></label><label>DESTINATION IP<input id="destinationIp" value="192.168.1.1" required></label></div>
+        <button class="primary-btn" type="submit"><span>◈</span> ANALYZE PACKET <b>→</b></button>
+      </form>
+      <div class="result-box" id="resultBox"><div class="result-symbol">⌁</div><div><b>READY FOR INSPECTION</b><small>Configure packet details and run the C filtering engine.</small></div><span class="result-id">IDLE</span></div>
+    </article>
+    <article class="panel flow-panel">
+      <div class="panel-heading"><div><div class="eyebrow">NETWORK VISUALIZATION</div><h3>Traffic flow</h3></div><span class="live-pill compact"><span class="pulse"></span> LIVE</span></div>
+      <div class="flow-stage"><div class="flow-endpoint"><div class="endpoint-icon">⌘</div><b>INBOUND</b><small>PACKET SOURCE</small></div><div class="flow-track"><div class="track-line"></div><div class="packet p1"></div><div class="packet p2"></div><div class="packet p3"></div><div class="firewall-node"><div>⌑</div><small>FILTER</small></div><div class="flow-arrows">› › ›</div></div><div class="flow-endpoint"><div class="endpoint-icon destination">◈</div><b>OUTBOUND</b><small>DESTINATION</small></div></div>
+      <div class="flow-legend"><span><i class="green-dot"></i> ALLOWED</span><span><i class="red-dot"></i> BLOCKED</span><span><i class="blue-dot"></i> INSPECTING</span></div>
+      <div class="mini-metrics"><div><small>POLICY MODE</small><b>DEFAULT DENY</b></div><div><small>FILTER TYPE</small><b>STATELESS</b></div><div><small>CORE LANGUAGE</small><b>C / WINSOCK</b></div></div>
+    </article>
+  </section>
+  <section class="panel rules-panel" id="rules">
+    <div class="panel-heading"><div><div class="eyebrow">POLICY CONFIGURATION</div><h3>Firewall rules <span class="count" id="ruleCount">05</span></h3></div><button class="outline-btn" id="addRuleBtn">＋ ADD RULE</button></div>
+    <div class="table-wrap"><table><thead><tr><th>RULE NAME</th><th>PROTOCOL</th><th>PORT</th><th>DECISION</th><th>STATUS</th><th></th></tr></thead><tbody id="rulesBody"><tr><td colspan="6">Loading rules from C engine...</td></tr></tbody></table></div>
+  </section>
+  <section class="panel activity-panel" id="activity">
+    <div class="panel-heading"><div><div class="eyebrow">SESSION TELEMETRY</div><h3>Recent packet activity</h3></div><button class="text-btn" id="clearActivity">CLEAR LOG ↗</button></div>
+    <div class="table-wrap"><table><thead><tr><th>TIME</th><th>SOURCE</th><th>DESTINATION</th><th>PROTOCOL</th><th>PORT</th><th>VERDICT</th></tr></thead><tbody id="activityBody"><tr><td colspan="6" class="empty">No packets inspected yet. Run a packet simulation to populate the log.</td></tr></tbody></table></div>
+  </section>
+  <footer><span>© 2026 SENTINEL FIREWALL ENGINE · v1.1.0</span><span>BUILT WITH <b>C</b> · EDUCATIONAL SIMULATION</span></footer>
+</main>
+<div class="modal-backdrop" id="modal"><form class="modal" id="ruleForm"><button type="button" class="modal-close" id="closeModal">×</button><div class="eyebrow">POLICY CONFIGURATION</div><h3>Create firewall rule</h3><p>Define a new packet filtering condition.</p><label>RULE NAME<input id="ruleName" placeholder="e.g. Block FTP traffic" required></label><div class="form-row"><label>PROTOCOL<select id="ruleProtocol"><option>TCP</option><option>UDP</option><option>ANY</option></select></label><label>PORT <input id="rulePort" type="number" min="0" max="65535" value="21" required></label></div><label>DECISION<select id="ruleAction"><option>BLOCK</option><option>ALLOW</option></select></label><button class="primary-btn" type="submit">SAVE FIREWALL RULE <b>→</b></button></form></div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
